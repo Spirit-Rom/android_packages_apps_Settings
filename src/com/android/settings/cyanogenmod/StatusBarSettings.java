@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 
@@ -42,12 +43,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
+    private PreferenceScreen mClockStyle;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -55,6 +58,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.status_bar_settings);
 
         ContentResolver resolver = getActivity().getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryShowPercent =
@@ -72,6 +76,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
+        updateClockStyleDescription();
     }
 
     @Override
@@ -95,6 +102,24 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateClockStyleDescription();
+    }
+
+    private void updateClockStyleDescription() {
+        if (mClockStyle == null) {
+            return;
+        }
+        if (Settings.System.getInt(getContentResolver(),
+               Settings.System.STATUS_BAR_CLOCK, 1) == 1) {
+            mClockStyle.setSummary(getString(R.string.enabled));
+        } else {
+            mClockStyle.setSummary(getString(R.string.disabled));
+         }
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
