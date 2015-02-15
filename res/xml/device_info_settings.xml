@@ -14,33 +14,14 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
-        <!-- System update settings - launches activity -->
-        <PreferenceScreen android:key="system_update_settings"
-                android:title="@string/system_update_settings_list_item_title" 
-                android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS"
-                    android:targetPackage="com.cyngn.fota"
-                    android:targetClass="com.cyngn.fota.SystemUpdateActivity" />
-        </PreferenceScreen>
-
-        <PreferenceScreen android:key="additional_system_update_settings"
-                          android:title="@string/additional_system_update_settings_list_item_title">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="@string/additional_system_update"
-                    android:targetClass="@string/additional_system_update_menu" />
-        </PreferenceScreen>
-
-        <!-- CyanogenMod Updates -->
-        <PreferenceScreen android:key="cm_updates"
-                android:title="@string/cmupdate_settings_title"
-                android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.cyanogenmod.updater"
-                    android:targetClass="com.cyanogenmod.updater.UpdatesSettings" />
-        </PreferenceScreen>
+        <PreferenceScreen
+                android:key="spirit_banner"
+                android:enabled="false"
+                android:layout="@layout/spirit_banner" />
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
@@ -49,12 +30,6 @@
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.deviceinfo.Status" />
-        </PreferenceScreen>
-
-        <!-- Contributors cloud -->
-        <PreferenceScreen android:key="contributor_cloud"
-            android:title="@string/contributor_cloud_title"
-            android:fragment="com.android.settings.cyanogenmod.ContributorsCloud" >
         </PreferenceScreen>
 
         <!-- Legal Information -->
@@ -79,13 +54,6 @@
                     android:key="license"
                     android:title="@string/license_title">
                 <intent android:action="android.settings.LICENSE" />
-            </PreferenceScreen>
-
-            <!-- CM License information -->
-            <PreferenceScreen
-                    android:key="cmlicense"
-                    android:title="@string/cmlicense_title">
-                <intent android:action="android.settings.CMLICENSE" />
             </PreferenceScreen>
 
             <!-- Terms and conditions -->
@@ -126,12 +94,6 @@
                 android:title="@string/model_name"
                 android:summary="@string/device_info_default"/>
 
-        <!-- Mod version -->
-        <Preference android:key="mod_version"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/mod_version"
-                android:summary="@string/mod_version_default" />
-
         <!-- Device firmware version -->
         <Preference android:key="firmware_version" 
                 style="?android:preferenceInformationStyle"
@@ -149,6 +111,12 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/baseband_version"
                 android:summary="@string/device_info_default"/>
+
+        <!-- Spirit version -->
+        <Preference android:key="spirit_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/spirit_version_title"
+                android:summary="@string/spirit_version_default" />
 
         <!-- Device Kernel version -->
         <Preference android:key="kernel_version" 
