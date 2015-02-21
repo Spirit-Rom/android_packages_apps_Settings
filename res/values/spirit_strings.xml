@@ -21,6 +21,7 @@
     <string name="spirit_controls_title">Spirit controls</string>
     <string name="animation_settings_title">Animation</string>
     <string name="general_settings_title">General</string>
+    <string name="lockscreen_settings_title">Lock screen</string>
     <string name="misc_settings_title">Misc</string>
     <string name="navigation_settings_title">Navigation</string>
     <string name="notifications_settings_title">Notification</string>

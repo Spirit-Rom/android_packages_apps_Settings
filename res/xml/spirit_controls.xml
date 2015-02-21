@@ -20,10 +20,22 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
         <PreferenceScreen
+            android:id="@+id/home_settings"
+            android:title="@string/home_settings"
+            android:fragment="com.android.settings.HomeSettings"
+            android:icon="@drawable/ic_settings_home" />
+
+        <PreferenceScreen
             android:key="general_settings"
             android:title="@string/general_settings_title"
             android:fragment="com.android.settings.spirit.fragments.GeneralSettings"
             android:icon="@drawable/ic_general" />
+
+        <PreferenceScreen
+            android:key="lock_settings"
+            android:title="@string/lockscreen_settings_title"
+            android:fragment="com.android.settings.spirit.fragments.LockSettings"
+            android:icon="@drawable/ic_settings_security" />
 
         <PreferenceScreen
             android:key="navigation_settings"

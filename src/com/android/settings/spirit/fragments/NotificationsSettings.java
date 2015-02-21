@@ -20,6 +20,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.settings.cyanogenmod.NotificationDrawerSettings;
+import com.android.settings.notification.NotificationManagerSettings;
 
 import java.lang.Exception;
 import java.util.ArrayList;
@@ -75,6 +76,7 @@ public class NotificationsSettings extends SettingsPreferenceFragment {
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
             frags[0] = new NotificationDrawerSettings();
+            frags[1] = new NotificationManagerSettings();
         }
 
         @Override
@@ -96,7 +98,8 @@ public class NotificationsSettings extends SettingsPreferenceFragment {
     private String[] getTitles() {
         String titleString[];
         titleString = new String[] {
-                    getString(R.string.notification_drawer_title)};
+                    getString(R.string.notification_drawer_title),
+                    getString(R.string.notification_manager)};
         return titleString;
     }
 }

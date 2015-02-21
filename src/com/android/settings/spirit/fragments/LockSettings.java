@@ -19,16 +19,14 @@ import com.android.internal.util.slim.DeviceUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.android.settings.SoundSettings;
-import com.android.settings.DisplaySettings;
-import com.android.settings.cyanogenmod.StatusBarSettings;
+import com.android.settings.lockscreen.LockScreenSettings;
 
 import java.lang.Exception;
 import java.util.ArrayList;
 
-public class GeneralSettings extends SettingsPreferenceFragment {
+public class LockSettings extends SettingsPreferenceFragment {
 
-    private static final String TAG = "GeneralSettings";
+    private static final String TAG = "LockSettings";
 
     PagerTabStrip mPagerTabStrip;
     ViewPager mViewPager;
@@ -76,9 +74,7 @@ public class GeneralSettings extends SettingsPreferenceFragment {
 
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
-            frags[0] = new SoundSettings();
-            frags[1] = new DisplaySettings();
-            frags[2] = new StatusBarSettings();
+            frags[0] = new LockScreenSettings();
         }
 
         @Override
@@ -100,9 +96,7 @@ public class GeneralSettings extends SettingsPreferenceFragment {
     private String[] getTitles() {
         String titleString[];
         titleString = new String[] {
-                    getString(R.string.category_sounds),
-                    getString(R.string.display_and_lights),
-                    getString(R.string.status_bar_title)};
+                    getString(R.string.lockscreen_settings)};
         return titleString;
     }
 }

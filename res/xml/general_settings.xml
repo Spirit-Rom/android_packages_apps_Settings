@@ -19,9 +19,19 @@
     android:title="@string/general_settings_title" >
 
     <PreferenceScreen
+        android:id="@+id/sound_settings"
+        android:title="@string/category_sounds"
+        android:fragment="com.android.settings.SoundSettings" />
+
+    <PreferenceScreen
+        android:id="@+id/display_and_lights_settings"
+        android:title="@string/display_and_lights"
+        android:fragment="com.android.settings.DisplaySettings" />
+
+    <PreferenceScreen
+        android:id="@+id/status_bar_settings"
         android:title="@string/status_bar_title"
         android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
-        android:icon="@drawable/ic_settings_extdesk_hidenavbar"
         settings:advanced="true" />
 
 </PreferenceScreen>

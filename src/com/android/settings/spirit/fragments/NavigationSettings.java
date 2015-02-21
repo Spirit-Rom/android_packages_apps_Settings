@@ -19,6 +19,8 @@ import com.android.internal.util.slim.DeviceUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.settings.ButtonSettings;
+
 import java.lang.Exception;
 import java.util.ArrayList;
 
@@ -72,6 +74,7 @@ public class NavigationSettings extends SettingsPreferenceFragment {
 
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
+            frags[0] = new ButtonSettings();
         }
 
         @Override
@@ -92,7 +95,8 @@ public class NavigationSettings extends SettingsPreferenceFragment {
 
     private String[] getTitles() {
         String titleString[];
-        titleString = new String[] {};
+        titleString = new String[] {
+                    getString(R.string.button_pref_title)};
         return titleString;
     }
 }
